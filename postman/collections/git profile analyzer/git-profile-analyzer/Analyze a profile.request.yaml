@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:4000/api/profiles
+method: POST
+body:
+  type: json
+  content: '{"username":"theajaypadigela"}'
+order: 3156257709578914

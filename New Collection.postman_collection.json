@@ -1,0 +1,102 @@
+{
+  "info": {
+    "_postman_id": "feef7e0b-0662-424a-ac1b-f38bf2600d72",
+    "name": "New Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40592590",
+    "_collection_link": "https://go.postman.co/collection/40592590-feef7e0b-0662-424a-ac1b-f38bf2600d72?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "get all profiles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/profiles",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4000",
+          "path": [
+            "api",
+            "profiles"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "add a profile",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"theajaypadigela\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/profiles",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4000",
+          "path": [
+            "api",
+            "profiles"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get a profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/profiles/theajaypadigela",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4000",
+          "path": [
+            "api",
+            "profiles",
+            "theajaypadigela"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete a profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/profiles/theajaypadigela",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4000",
+          "path": [
+            "api",
+            "profiles",
+            "theajaypadigela"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

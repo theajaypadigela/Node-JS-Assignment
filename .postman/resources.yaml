@@ -1,0 +1,9 @@
+# Use this workspace to collaborate
+workspace:
+  id: c691b514-2f45-4af9-92c0-07f3fa8c48f6
+
+localResources:
+  collections:
+    - ../postman_collection.json
+  specs:
+    - ../postman/specs/git-profile-analyzer/git-profile-analyzer.json

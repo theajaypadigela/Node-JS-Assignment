@@ -1,0 +1,64 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "git-profile-analyzer",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000"
+    }
+  ],
+  "paths": {
+    "/api/profiles": {
+      "get": {
+        "summary": "get-profiles",
+        "responses": {},
+        "tags": [
+          "git-profile-analyzer"
+        ]
+      },
+      "post": {
+        "summary": "Analyze a profile",
+        "responses": {},
+        "tags": [
+          "git-profile-analyzer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "username": "theajaypadigela"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profiles/theajaypadigela": {
+      "get": {
+        "summary": "Fetch One",
+        "responses": {},
+        "tags": [
+          "git-profile-analyzer"
+        ]
+      },
+      "delete": {
+        "summary": "Delete profile",
+        "responses": {},
+        "tags": [
+          "git-profile-analyzer"
+        ]
+      }
+    }
+  }
+}

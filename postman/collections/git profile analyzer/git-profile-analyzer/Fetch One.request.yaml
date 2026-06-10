@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:4000/api/profiles/theajaypadigela
+method: GET
+order: 1708828855828289

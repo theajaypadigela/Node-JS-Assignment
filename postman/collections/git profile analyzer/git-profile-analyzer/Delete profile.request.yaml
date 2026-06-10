@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:4000/api/profiles/theajaypadigela
+method: DELETE
+order: 2790746517331111

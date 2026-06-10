@@ -1,0 +1,141 @@
+{
+  "info": {
+    "name": "GitHub Profile Analyzer API",
+    "description": "Backend service that analyzes GitHub profiles via the GitHub public API and stores insights in MySQL.\n\nSet the `baseUrl` collection variable if your server runs on a different port (default http://localhost:4000).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "octocat",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        },
+        "description": "Liveness probe. Returns { success, status: 'ok', uptime }."
+      }
+    },
+    {
+      "name": "API map (root)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        },
+        "description": "Lists every available endpoint."
+      }
+    },
+    {
+      "name": "Analyze profile (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"{{username}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/profiles",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profiles"]
+        },
+        "description": "Fetches the GitHub profile + repos, computes insights, and stores them. Returns 201 with the stored record. Re-analyzing the same user refreshes the row (no duplicates)."
+      }
+    },
+    {
+      "name": "List all profiles (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/profiles?limit=50&offset=0",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profiles"],
+          "query": [
+            { "key": "limit", "value": "50", "description": "Max 100 (default 50)" },
+            { "key": "offset", "value": "0", "description": "For pagination (default 0)" }
+          ]
+        },
+        "description": "Returns all stored analyzed profiles, newest first, with pagination metadata."
+      }
+    },
+    {
+      "name": "Get one profile (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/profiles/{{username}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profiles", "{{username}}"]
+        },
+        "description": "Returns the full stored record for one previously-analyzed username. 404 if not analyzed yet."
+      }
+    },
+    {
+      "name": "Delete a profile (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/profiles/{{username}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profiles", "{{username}}"]
+        },
+        "description": "Removes a stored profile. 404 if it does not exist."
+      }
+    },
+    {
+      "name": "Error: missing username (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{}" },
+        "url": {
+          "raw": "{{baseUrl}}/api/profiles",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profiles"]
+        },
+        "description": "Demonstrates 400 validation error when username is missing."
+      }
+    },
+    {
+      "name": "Error: nonexistent GitHub user (404)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"username\": \"zzqq-nouser-99xyz\"\n}" },
+        "url": {
+          "raw": "{{baseUrl}}/api/profiles",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "profiles"]
+        },
+        "description": "Demonstrates 404 when the GitHub user does not exist."
+      }
+    }
+  ]
+}

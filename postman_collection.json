@@ -1,13 +1,13 @@
 {
   "info": {
     "name": "GitHub Profile Analyzer API",
-    "description": "Backend service that analyzes GitHub profiles via the GitHub public API and stores insights in MySQL.\n\nSet the `baseUrl` collection variable if your server runs on a different port (default http://localhost:4000).",
+    "description": "Backend service that analyzes GitHub profiles via the GitHub public API and stores insights in MySQL.\n\nSet the `baseUrl` collection variable if your server runs on a different port (default https://node-js-assignment-aby7.onrender.com).",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:4000",
+      "value": "https://node-js-assignment-aby7.onrender.com",
       "type": "string"
     },
     {
